@@ -1,0 +1,98 @@
+<ion-header [translucent]="true" class="header" >
+
+  <ion-item lines="none" class="search" >
+    <ion-icon name="search-outline" class="searchicon" ></ion-icon>
+    <ion-input placeholder="search" class="searchtext"></ion-input>
+  </ion-item>
+  <ion-icon name="notifications-outline" size="large" color="primary"    class="notification"  ></ion-icon>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="page-home">
+ 
+  <ion-grid class="new">
+    <div id="container">
+
+      <h4 id="h4"> SpOrTiFy OnLiNe       </h4>
+      <img src="assets\image\firstimg.png" alt="rachelle" class="first">
+
+     </div>
+</ion-grid>
+
+<ion-grid class="slide">
+
+  <swiper-container [options]="swiperConfig">
+    <swiper-slide *ngFor="let image of images">
+      <ion-card>
+        <img [src]="image.url" [alt]="image.title">
+        <ion-card-header>
+          <ion-card-title>{{ image.title }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <h4>Les  plus populaires</h4>
+    </ion-col>
+
+    <ion-col >
+      <a href=""> Tout voir</a>
+  </ion-col>
+  </ion-row>
+
+
+  <swiper-container class="swip2" [options]="swiperConfig2">
+    <swiper-slide *ngFor="let exercise of popularExercises">
+      <ion-card>
+        <ion-card-header>
+          <img [src]="exercise.url" [alt]="exercise.title">
+          <ion-card-title>{{ exercise.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label>
+            <h4>{{ exercise.description }}</h4>
+            <p>{{ exercise.timing }}</p>
+          </ion-label>
+          <div class="swipe-indicator">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            <span>Glissez pour découvrir plus</span>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </swiper-slide>
+  </swiper-container>
+  
+</ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container">
+      <div class="footer-item active">
+        <ion-icon name="home-outline"></ion-icon>
+        <span>Accueil</span>
+      </div>
+      <div class="footer-item">
+        <ion-icon name="fitness-outline"></ion-icon>
+        <span>exercices</span>
+      </div>
+      <div class="footer-item">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <span>Notifications</span>
+      </div>
+      
+      <div class="footer-item">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <span>Paiement</span>
+      </div>
+      <div class="footer-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Profil</span>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

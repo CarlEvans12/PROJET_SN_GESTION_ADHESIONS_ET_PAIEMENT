@@ -1,0 +1,7 @@
+{
+  "name": "apmobie",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

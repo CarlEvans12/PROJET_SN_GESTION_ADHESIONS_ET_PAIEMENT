@@ -1,0 +1,43 @@
+
+  <ion-content [fullscreen]="true"class="background">
+    <div class="container">
+      <div class="logo">
+        <h1>SpOrTiFy OnLiNe</h1>
+      </div>
+
+      <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+        <ion-item>
+          <ion-input 
+
+            formControlName="email" 
+            type="email" 
+            placeholder="Email"
+          ></ion-input>
+
+        </ion-item>
+        
+        <ion-item>
+
+          <ion-input 
+            formControlName="password" 
+            type="password" 
+            placeholder="Mot de passe"
+          ></ion-input>
+        </ion-item>
+        <ion-button 
+          expand="full" 
+          type="submit" 
+          [disabled]="!loginForm.valid"
+        >
+          Connexion
+        </ion-button>
+        <div class="register">
+          <p>Pas de compte ? 
+            <a (click)="goToRegister()">Inscrivez-vous</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+ 
+
