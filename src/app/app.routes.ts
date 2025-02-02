@@ -25,5 +25,21 @@ export const routes: Routes = [
   {
     path: 'register',
     loadComponent: () => import('./register/register.page').then( m => m.RegisterPage)
+  },
+  {
+    path: 'exercices',
+    loadComponent: () => import('./exercices/exercices.page').then( m => m.ExercicesPage)
+  },
+  {
+    path: 'notification',
+    loadComponent: () => import('./notification/notification.page').then( m => m.NotificationPage)
+  },
+  {
+    path: 'profil',
+    loadComponent: () => import('./profil/profil.page').then( m => m.ProfilPage)
+  },
+  {
+    path: 'paiement',
+    loadComponent: () => import('./paiement/paiement.page').then( m => m.PaiementPage)
   }
 ];

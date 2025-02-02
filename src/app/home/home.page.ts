@@ -35,6 +35,7 @@ import {
 } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 register();
 
 addIcons({
@@ -55,6 +56,7 @@ addIcons({
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
+    RouterModule,
     CommonModule,
     IonHeader,
     IonToolbar,
@@ -100,9 +102,9 @@ export class HomePage implements OnInit {
     },
     autoplay: {
       delay: 3000,
-      disableOnInteraction: false  // Permet de continuer l'autoplay même après interaction
+      disableOnInteraction: false  
     },
-    loop: true  // Important pour un défilement continu
+    loop: true  
   };
 
   // Tableau d'images à faire défiler
@@ -127,15 +129,15 @@ export class HomePage implements OnInit {
       timing: 'MATIN/SOIR'
     },
     {
-      url: 'assets/image/img7.jpg',
-      title: 'Exercices Squats',
-      description: 'SQUATS',
+      url: 'assets/image/splash.jpg',
+      title: 'Exercices CORDE',
+      description: 'CORDE A SAUTER',
       timing: 'MATIN/SOIR'
     },
     {
-      url: 'assets/image/img8.jpg',
-      title: 'Exercices Squats',
-      description: 'SQUATS',
+      url: 'assets/image/img3.jpg',
+      title: 'Exercices Jambes',
+      description: 'CARDIO',
       timing: 'MATIN/SOIR'
     },
   ];

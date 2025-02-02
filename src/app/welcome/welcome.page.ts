@@ -27,19 +27,19 @@ addIcons({
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonIcon]
 })
 export class WelcomePage {
-  @ViewChild(IonContent) content!: IonContent;
+  @ViewChild(IonContent) contenu!: IonContent;
 
   constructor(
     private router: Router,
-    private gestureCtrl: GestureController
+    private controleurGeste: GestureController
   ) {}
 
   async ngAfterViewInit() {
     
-    const contentElement = await this.content.getScrollElement();
+    const elementContenu = await this.contenu.getScrollElement();
     
-    const gesture = this.gestureCtrl.create({
-      el: contentElement,
+    const gesture = this.controleurGeste.create({
+      el: elementContenu,
       gestureName: 'swipe-up',
       direction: 'y',
       onMove: (detail) => {

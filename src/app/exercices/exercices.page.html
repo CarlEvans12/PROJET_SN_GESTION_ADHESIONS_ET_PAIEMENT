@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Exercices </ion-title>
+  </ion-toolbar>
+  <ion-item lines="none" class="search">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input 
+      placeholder="Rechercher un exercice" 
+      (ionInput)="gererRecherche($event)"
+      [(ngModel)]="termeRecherche">
+    </ion-input>
+  </ion-item>
+  
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <div id="conteneur" class="entete">
+    <h4 id="h4">Programme d'entraînement à domicile</h4>
+  </div>
+
+
+ <div class="grilleexercise">
+  <ion-card *ngFor="let exercice of exercicesFiltres" class="exercise-card">
+  
+      
+      <ion-card-header>
+        <ion-card-title>{{ exercice.titre }}</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="info">
+          <div class="difficulte">
+            <span class="dot"></span>
+            <h4>{{ exercice.niveau }}</h4>
+          </div>
+          
+          <div class="duree">
+            <ion-icon name="time"></ion-icon>
+            <p>{{ exercice.duree }}</p>
+          </div>
+          
+          <div class="calories">
+            <ion-icon name="flame-outline"></ion-icon>
+            <p>{{ exercice.calories }} calories</p>
+          </div>
+        </div>
+        
+        <p class="description">{{ exercice.description }}</p>
+        
+        <div class="instructions">
+          <h5>Comment réaliser :</h5>
+          <p>{{ exercice.instructions }}</p>
+        </div>
+        
+        <div class="equipement">
+          <h5>Équipement nécessaire :</h5>
+          <p>{{ exercice.equipement.join(', ') }}</p>
+        </div>
+
+       
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  
+  
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container">
+      <div  [routerLink]="['/home']" class="footer-item active">
+        <ion-icon name="home-outline"></ion-icon>
+        <span>Accueil</span>
+      </div>
+      <div [routerLink]="['/exercices']" class="footer-item">
+        <ion-icon name="fitness-outline"></ion-icon>
+        <span>exercices</span>
+      </div>
+      <div  [routerLink]="['/notification']" class="footer-item">
+        
+        <ion-icon name="notifications-outline"></ion-icon>
+        <span>Notifications</span>
+     
+      </div>
+      
+      <div [routerLink]="['/paiement']" class="footer-item">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <span>Paiement</span>
+      </div>
+      <div  [routerLink]="['/profil']"class="footer-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Profil</span>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

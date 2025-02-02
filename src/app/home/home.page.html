@@ -4,7 +4,7 @@
     <ion-icon name="search-outline" class="searchicon" ></ion-icon>
     <ion-input placeholder="search" class="searchtext"></ion-input>
   </ion-item>
-  <ion-icon name="notifications-outline" size="large" color="primary"    class="notification"  ></ion-icon>
+  <ion-icon [routerLink]="['/notification']" name="notifications-outline" size="large" color="primary"    class="notification"  ></ion-icon>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="page-home">
@@ -72,24 +72,26 @@
 <ion-footer>
   <ion-toolbar>
     <div class="footer-container">
-      <div class="footer-item active">
+      <div  [routerLink]="['/home']" class="footer-item active">
         <ion-icon name="home-outline"></ion-icon>
         <span>Accueil</span>
       </div>
-      <div class="footer-item">
+      <div [routerLink]="['/exercices']" class="footer-item">
         <ion-icon name="fitness-outline"></ion-icon>
         <span>exercices</span>
       </div>
-      <div class="footer-item">
+      <div  [routerLink]="['/notification']" class="footer-item">
+        
         <ion-icon name="notifications-outline"></ion-icon>
         <span>Notifications</span>
+     
       </div>
       
-      <div class="footer-item">
+      <div [routerLink]="['/paiement']" class="footer-item">
         <ion-icon name="wallet-outline"></ion-icon>
         <span>Paiement</span>
       </div>
-      <div class="footer-item">
+      <div  [routerLink]="['/profil']"class="footer-item">
         <ion-icon name="person-outline"></ion-icon>
         <span>Profil</span>
       </div>

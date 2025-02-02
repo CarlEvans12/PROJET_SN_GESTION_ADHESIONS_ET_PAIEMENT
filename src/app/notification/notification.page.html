@@ -1,0 +1,61 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-title>
+      <div class="titre">
+        <h1>Notifications</h1>
+        <span class="notifinonlue">{{ obtenirNombreNonLus() }} nouvelles</span>
+         
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let notification of notifications; let i = index"
+              [class.nonlue]="notification.nonlue"
+              class="notifitem">
+              <div class="notifcontenu" (click)="marquerCommeLu(notification)">
+       
+        <div class="text">
+          <h2>{{ notification.title }}</h2>
+          <p>{{ notification.message }}</p>
+          <span class="time">{{ notification.time }}</span>
+        </div>
+        
+        <ion-button fill="clear" (click)="supprimerNotification(i, $event)" class="boutonsupp">
+          <ion-icon name="close-outline" color="medium"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container">
+      <div  [routerLink]="['/home']" class="footer-item active">
+        <ion-icon name="home-outline"></ion-icon>
+        <span>Accueil</span>
+      </div>
+      <div [routerLink]="['/exercices']" class="footer-item">
+        <ion-icon name="fitness-outline"></ion-icon>
+        <span>exercices</span>
+      </div>
+      <div  [routerLink]="['/notification']" class="footer-item">
+        
+        <ion-icon name="notifications-outline"></ion-icon>
+        <span>Notifications</span>
+     
+      </div>
+      
+      <div [routerLink]="['/paiement']" class="footer-item">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <span>Paiement</span>
+      </div>
+      <div  [routerLink]="['/profil']"class="footer-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Profil</span>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
