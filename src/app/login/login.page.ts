@@ -1,59 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
-import {  
-   IonItem, IonButton, IonInput } from '@ionic/angular/standalone';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './auth.service';
+
+interface LoginResponse {
+    success: boolean;
+    user?: any; 
+    message?: string;
+}
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
-  standalone: true,
-  imports: [
-    IonContent, 
-    IonHeader, 
-    IonTitle, 
-    IonToolbar, 
-    CommonModule, 
-    ReactiveFormsModule,
-    IonItem,
-    IonToolbar,
-    IonButton,
-    IonInput
-  ]
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+    loginForm: FormGroup;
 
-  loginForm!: FormGroup; //permet de dire à TypeScript que je suis  sûr que la variable loginForm sera initialisée à un moment donné avant d'être utilisée pour eviter les erreur 
-
-
-  constructor(private router: Router,
-     private formBuilder: FormBuilder,) {
-
-    // Empêcher le retour en arrière
-    history.pushState(null, '', window.location.href);
-    window.onpopstate = function () {
-      history.pushState(null, '', window.location.href);
-    };
-  }
-
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-
-  onLogin() {
-    if (this.loginForm.valid) {
-      // ici quand on va impleter l'api comme ca apres souscription des info ca va allé chercher dans la bd du  coté admin
-      
+    constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+        this.loginForm = this.formBuilder.group({
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required]],
+        });
     }
-  }
 
-  goToRegister() {
-    this.router.navigate(['/register']);
-  }
+    onLogin() {
+        if (this.loginForm.valid) {
+            this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+                .subscribe((response: LoginResponse) => {
+                    if (response.success) {
+                        // Gérer la connexion réussie
+                        console.log('Login successful', response.user);
+                    } else {
+                        // Gérer l'échec de la connexion
+                        console.error(response.message);
+                    }
+                });
+        }
+    }
+
+    goToRegister() {
+        // Redirection vers la page d'inscription
+    }
 }
