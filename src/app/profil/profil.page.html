@@ -1,13 +1,105 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>profil</ion-title>
+    <ion-title class="titre">Mon Profil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modifierProfil()">
+        <ion-icon name="create-outline" class="edit-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="profile-container">
+    
+    <div class="profile-header">
+      <div class="avatar-container">
+        <ion-avatar class="profile-avatar">
+          <img src='assets/image/img14.jpg' alt="Photo de profil">
+        </ion-avatar>
+        <ion-button fill="clear" class="change-photo" (click)="changerPhoto()">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <h2 class="user-name">{{utilisateur.prenom}} {{utilisateur.nom}}</h2>
+    </div>
+
+    
+    <form [formGroup]="profilForm" (ngSubmit)="sauvegarderModifications()">
+      <div class="info-section" [class.edition-active]="modeEdition">
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">Prénom</ion-label>
+            <ion-input 
+  [disabled]="!modeEdition"
+  formControlName="prenom" 
+  type="text">
+</ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Nom</ion-label>
+            <ion-input formControlName="nom" type="text" [readonly]="!modeEdition"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input formControlName="email" type="email" [readonly]="!modeEdition"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Téléphone</ion-label>
+            <ion-input formControlName="telephone" type="tel" [readonly]="!modeEdition"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        
+        <div class="action-buttons" *ngIf="modeEdition">
+          <ion-button type="button" fill="outline" (click)="annulerModifications()">
+            Annuler
+          </ion-button>
+          <ion-button type="submit">
+            Sauvegarder
+          </ion-button>
+        </div>
+      </div>
+    </form>
+
+    
+    <div class="security-section">
+      <ion-item button detail="true" (click)="changerMotDePasse()">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label>Changer le mot de passe</ion-label>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container">
+      <div  [routerLink]="['/home']" class="footer-item active">
+        <ion-icon name="home-outline"></ion-icon>
+        <span>Accueil</span>
+      </div>
+      <div [routerLink]="['/exercices']" class="footer-item">
+        <ion-icon name="fitness-outline"></ion-icon>
+        <span>exercices</span>
+      </div>
+      <div  [routerLink]="['/notification']" class="footer-item">
+        
+        <ion-icon name="notifications-outline"></ion-icon>
+        <span>Notifications</span>
+     
+      </div>
+      
+      <div [routerLink]="['/paiement']" class="footer-item">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <span>Paiement</span>
+      </div>
+      <div  [routerLink]="['/profil']"class="footer-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Profil</span>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
