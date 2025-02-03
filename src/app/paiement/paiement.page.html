@@ -1,13 +1,154 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>paiement</ion-title>
+    <ion-title class="titre">Paiement</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">paiement</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+   <div class="subscription-selection">
+    <!-- Sélection du type d'abonnement -->
+    <ion-list>
+      <ion-item>
+        <ion-label>Type d'abonnement</ion-label>
+        <ion-select [(ngModel)]="typeAbonnement" 
+                   (ionChange)="changerTypeAbonnement($event)"
+                   interface="popover">
+          <ion-select-option value="standard">Standard (10,000 FCFA/mois)</ion-select-option>
+          <ion-select-option value="premium">Premium (15,000 FCFA/mois)</ion-select-option>
+          <ion-select-option value="pro">Pro (20,000 FCFA/mois)</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Durée de l'abonnement</ion-label>
+        <ion-select [(ngModel)]="nombreMois" 
+                   (ionChange)="changerNombreMois($event)"
+                   interface="popover">
+          <ion-select-option [value]="1">1 mois</ion-select-option>
+          <ion-select-option [value]="3">3 mois</ion-select-option>
+          <ion-select-option [value]="6">6 mois</ion-select-option>
+          <ion-select-option [value]="12">12 mois</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+
+    <ion-segment (ionChange)="changerMethodePaiement($event)" [value]="methodePaiement" class="payment-segment">
+      <ion-segment-button value="carte">
+        <ion-icon name="card-outline"></ion-icon>
+    <ion-label>Carte</ion-label>
+   </ion-segment-button>
+  <ion-segment-button value="orange">
+      <ion-icon name="phone-portrait-outline"></ion-icon>
+        <ion-label>Orange Money</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="mtn">
+        <ion-icon name="phone-portrait-outline"></ion-icon>
+        <ion-label>MTN MoMo</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+<div class="payment-form" [ngSwitch]="methodePaiement">
+  
+      <!-- Formulaire Carte Bancaire -->
+      <div *ngSwitchCase="'carte'" class="card-form">
+        <ion-list>
+          <ion-item>
+            <ion-input label="Numéro de carte" 
+                      type="text" 
+                      [(ngModel)]="numeroCarte"
+                      placeholder="1234 5678 9012 3456">
+            </ion-input>
+          </ion-item>
+          
+    <div class="card-details">
+            <ion-item>
+              <ion-input label="Date d'expiration" 
+                        type="text" 
+                        [(ngModel)]="expirationCarte"
+                        placeholder="MM/AA">
+              </ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input label="CVV" 
+                        type="number" 
+                        [(ngModel)]="cvvCarte"
+                        placeholder="123">
+              </ion-input>
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+
+      <!-- Formulaire Orange Money -->
+      <div *ngSwitchCase="'orange'" class="mobile-form">
+        <ion-list>
+          <ion-item>
+            <ion-input label="Numéro Orange Money" 
+                      type="tel" 
+                      [(ngModel)]="numeroMobile"
+                      placeholder="690655756">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <!-- Formulaire MTN MoMo -->
+      <div *ngSwitchCase="'mtn'" class="mobile-form">
+        <ion-list>
+          <ion-item>
+            <ion-input label="Numéro MTN MoMo" 
+                      type="tel" 
+                      [(ngModel)]="numeroMobile"
+                      placeholder="690655756">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
+    <div class="payment-summary">
+      <h3>Résumé</h3>
+      <div class="summary-item">
+        <span>{{typeAbonnement | titlecase}} - {{nombreMois}} mois</span>
+        <span>{{montantBase[typeAbonnement]}} FCFA/mois</span>
+      </div>
+      <div class="summary-item total">
+        <span>Total à payer</span>
+        <span>{{montant}} FCFA</span>
+      </div>
+    </div>
+
+    <ion-button expand="block" class="pay-button" (click)="traiterPaiement()">
+      <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+      Payer {{montant}} FCFA
+    </ion-button>
+  
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container">
+      <div [routerLink]="['/home']" class="footer-item">
+        <ion-icon name="home-outline"></ion-icon>
+        <span>Accueil</span>
+      </div>
+      <div [routerLink]="['/exercices']" class="footer-item">
+        <ion-icon name="fitness-outline"></ion-icon>
+        <span>Exercices</span>
+      </div>
+      <div [routerLink]="['/notification']" class="footer-item">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <span>Notifications</span>
+      </div>
+      <div [routerLink]="['/paiement']" class="footer-item active">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <span>Paiement</span>
+      </div>
+      <div [routerLink]="['/profil']" class="footer-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <span>Profil</span>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

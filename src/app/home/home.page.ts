@@ -65,7 +65,7 @@ addIcons({
     IonIcon,
     IonInput,
     IonCard,
-    
+    RouterModule,
     IonCardContent,
     IonCardHeader,
     IonCardTitle,
