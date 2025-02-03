@@ -108,6 +108,13 @@ export class HomePage implements OnInit {
   // Tableau d'images à faire défiler
 
   popularExercises = [
+    
+    {
+      url: 'assets/image/img11.jpg',
+      title: 'Exercices Squats',
+      description: 'SQUATS',
+      timing: 'MATIN/SOIR'
+    },
     {
       url: 'assets/image/img4.jpg',
       title: 'Exercices Squats',
@@ -133,6 +140,12 @@ export class HomePage implements OnInit {
       timing: 'MATIN/SOIR'
     },
     {
+      url: 'assets/image/img36.jpg',
+      title: 'Exercices Squats',
+      description: 'SQUATS',
+      timing: 'MATIN/SOIR'
+    },
+    {
       url: 'assets/image/img3.jpg',
       title: 'Exercices Jambes',
       description: 'CARDIO',
@@ -151,7 +164,7 @@ export class HomePage implements OnInit {
       title: 'La douleur est temporaire, la fierté est éternelle'
     },
     {
-      url: 'assets/image/img3.jpg',
+      url: 'assets/image/img7.jpg',
       title: 'Tu es plus fort que tu ne le penses'
     }
   ];

@@ -129,9 +129,9 @@ export class ExercicesPage implements OnInit {
         description: "Excellent exercice pour développer le haut du corps",
         instructions: "1. Position de planche. 2. Descendre en pliant les bras. 3. Remonter en poussant",
         images: [
-          'assets/image/img10.jpg',
-          'assets/image/img1.jpg',
-          'assets/image/img2.jpg'
+          'assets/image/img30.jpg',
+          'assets/image/img18.jpg',
+          'assets/image/img20.jpg'
         ],
         calories: 100,
         equipement: ["Tapis de sport (optionnel)"]
@@ -144,9 +144,9 @@ export class ExercicesPage implements OnInit {
         description: "Parfait pour renforcer les jambes",
         instructions: "1. Debout, pieds écartés. 2. Descendre comme pour s'asseoir. 3. Remonter",
         images: [
-          'assets/image/img10.jpg',
-          'assets/image/img11.jpg',
-          'assets/image/img13.jpg'
+          'assets/image/img23.jpg',
+          'assets/image/img17.jpg',
+          'assets/image/img5.jpg'
         ],
         calories: 150,
         equipement: ["Aucun"]
@@ -159,9 +159,9 @@ export class ExercicesPage implements OnInit {
         description: "Renforce les abdominaux et le core",
         instructions: "1. Appui sur les avant-bras. 2. Corps droit et gainé. 3. Tenir la position",
         images: [
-          'assets/image/img10.jpg',
-          'assets/image/img7.jpg',
-          'assets/image/img6.jpg'
+          'assets/image/img16.jpg',
+          'assets/image/img15.jpg',
+          'assets/image/img22.jpg'
         ],
         calories: 80,
         equipement: ["Tapis de sport"]
@@ -174,9 +174,9 @@ export class ExercicesPage implements OnInit {
         description: "Exercice complet très intense",
         instructions: "1. Debout. 2. Position pompe. 3. Saut vertical. 4. Recommencer",
         images: [
-          'assets/image/img10.jpg',
-          'assets/image/img12.jpg',
-          'assets/image/img13.jpg'
+          'assets/image/img23.jpg',
+          'assets/image/img20.jpg',
+          'assets/image/img21.jpg'
         ],
         calories: 200,
         equipement: ["Aucun"]
