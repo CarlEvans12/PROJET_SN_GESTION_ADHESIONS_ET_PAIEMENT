@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit, AfterViewInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { 
   IonContent, 
   IonHeader,
@@ -58,7 +60,7 @@ interface Exercice {
   duree: string;
   description: string;
   instructions: string;
-  image: string;
+  images: string[];
   calories: number;
   equipement: string[];
 }
@@ -84,12 +86,20 @@ interface Exercice {
     IonInput,
     FormsModule,
     IonItem
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ExercicesPage implements OnInit {
   exercices: Exercice[] = [];
   exercicesFiltres: Exercice[] = [];
   termeRecherche: string = '';
+ 
+ 
+  swiperParams = {
+    slidesPerView: 1,
+    pagination: true,
+    navigation: true
+  };
 
   constructor() {
     
@@ -98,6 +108,15 @@ export class ExercicesPage implements OnInit {
   ngOnInit() {
     this.initialiserExercices();
     this.exercicesFiltres = this.exercices; 
+  }
+  ngAfterViewInit() {
+    
+    const swipers = document.querySelectorAll('swiper-container');
+    swipers.forEach(swiper => {
+      Object.assign(swiper, this.swiperParams);
+     
+      swiper.initialize();
+    });
   }
 
   private initialiserExercices() {
@@ -109,7 +128,11 @@ export class ExercicesPage implements OnInit {
         duree: "10 minutes",
         description: "Excellent exercice pour développer le haut du corps",
         instructions: "1. Position de planche. 2. Descendre en pliant les bras. 3. Remonter en poussant",
-        image: 'assets/image/img4.jpg',
+        images: [
+          'assets/image/img10.jpg',
+          'assets/image/img1.jpg',
+          'assets/image/img2.jpg'
+        ],
         calories: 100,
         equipement: ["Tapis de sport (optionnel)"]
       },
@@ -120,7 +143,11 @@ export class ExercicesPage implements OnInit {
         duree: "15 minutes",
         description: "Parfait pour renforcer les jambes",
         instructions: "1. Debout, pieds écartés. 2. Descendre comme pour s'asseoir. 3. Remonter",
-        image: "/api/placeholder/400/300",
+        images: [
+          'assets/image/img10.jpg',
+          'assets/image/img11.jpg',
+          'assets/image/img13.jpg'
+        ],
         calories: 150,
         equipement: ["Aucun"]
       },
@@ -131,7 +158,11 @@ export class ExercicesPage implements OnInit {
         duree: "5 minutes",
         description: "Renforce les abdominaux et le core",
         instructions: "1. Appui sur les avant-bras. 2. Corps droit et gainé. 3. Tenir la position",
-        image: "/api/placeholder/400/300",
+        images: [
+          'assets/image/img10.jpg',
+          'assets/image/img7.jpg',
+          'assets/image/img6.jpg'
+        ],
         calories: 80,
         equipement: ["Tapis de sport"]
       },
@@ -142,7 +173,11 @@ export class ExercicesPage implements OnInit {
         duree: "20 minutes",
         description: "Exercice complet très intense",
         instructions: "1. Debout. 2. Position pompe. 3. Saut vertical. 4. Recommencer",
-        image: "/api/placeholder/400/300",
+        images: [
+          'assets/image/img10.jpg',
+          'assets/image/img12.jpg',
+          'assets/image/img13.jpg'
+        ],
         calories: 200,
         equipement: ["Aucun"]
       }

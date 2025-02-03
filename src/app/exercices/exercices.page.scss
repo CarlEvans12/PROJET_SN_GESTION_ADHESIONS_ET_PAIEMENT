@@ -1,122 +1,4 @@
-:root {
-    --primary-color: #4ECDC4;
-    --secondary-color: #FF6B6B;
-    --text-color: #333;
-    --light-bg: #e0e0e094;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-  }
-  
-  ion-header {
-    ion-toolbar {
-      --background: var(--footer-bg);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-  
-    .search {
-        --background: #e0e0e094 ;
-        border-radius: 30px;
-        width:calc(100% - 40px);
-        position: relative;
-        bottom: -25px;
-        left: 20px;
-    }
-  
-    ion-icon {
-      color: #666;
-      font-size: 1.2rem;
-    }
-  
-    ion-input {
-      --padding-start: 10px;
-      --placeholder-color: #666;
-      --placeholder-opacity: 0.8;
-    }
-  }
-
-  .entete {
-    background: var(--primary-color);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  #h4 {
-    color: #fff;
-    font-size: 2rem;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    font-weight: 800;
-    letter-spacing: 2px;
-    animation: glowText 2s ease-in-out infinite;
-  }
-  
-
-  .grilleexercise {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    padding: 10px;
-  }
-  
-  .exercise-card {
-    margin: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .exercise-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .exercise-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-  
-  ion-card-header {
-    background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(255, 107, 107, 0.1));
-  
-    ion-card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-color);
-      background: linear-gradient(45deg, #4ECDC4, #FF6B6B);
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
-  
-  ion-card-content {
-    padding: 15px;
-  
-    ion-label {
-      h4 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #2c3e50;
-        margin-bottom: 5px;
-      }
-  
-      p {
-        font-size: 0.9rem;
-        color: #7f8c8d;
-      }
-    }
-  }
-  
-
-  ion-footer {
+ion-footer {
     ion-toolbar {
       --background: #ffffff;
       --border-width: 0;
@@ -137,68 +19,192 @@
       padding: 8px 15px;
       position: relative;
       transition: all 0.3s ease;
-      cursor: pointer;
-    }
   
-    .footer-item ion-icon {
-      font-size: 1.5rem;
-      color: #666;
-      margin-bottom: 4px;
-    }
+      ion-icon {
+        font-size: 1.5rem;
+        color: #666;
+        margin-bottom: 4px;
+      }
   
-    .footer-item span {
-      font-size: 0.7rem;
-      color: #666;
-    }
+      span {
+        font-size: 0.7rem;
+        color: #666;
+      }
   
-    .footer-item.active {
-      color: var(--primary-color);
-    }
+      &.active {
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 4px;
+          background: #4ECDC4;
+          border-radius: 50%;
+        }
   
-    .footer-item.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 4px;
-      background: var(--primary-color);
-      border-radius: 50%;
-    }
+        ion-icon, span {
+          color: #4ECDC4;
+        }
+      }
   
-    .footer-item:hover {
-      transform: translateY(-2px);
-      color: var(--primary-color);
-    }
-  }
+      &:hover {
+        transform: translateY(-2px);
   
-  
-  @keyframes glowText {
-    0%, 100% {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-    }
-    50% {
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        ion-icon, span {
+          color: #4ECDC4;
+        }
+      }
     }
   }
   
+  // Animation pour le footer actif
   @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
   }
+:root {
+    --primary-color: #4ECDC4;
+    --secondary-color: #FF6B6B;
+    --text-color: #333;
+    --background-light: #e0e0e094;
+  }
   
-  @keyframes shine {
-    to {
-      left: 100%;
+  .grilleexercise {
+    display: grid;
+    gap: 20px;
+    padding: 16px;
+    
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
   
-
-  @media (max-width: 480px) {
-    .grilleexercise {
-      grid-template-columns: 1fr;
+  .exercise-card {
+    border-radius: 15px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  
+    .image-slider {
+      width: 100%;
+      height: 200px;
+      
+      swiper-slide {
+        width: 100%;
+        height: 100%;
+        
+        .image-container {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
     }
   }
   
+  ion-card-header {
+    padding: 16px;
+    
+    ion-card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    
+    .difficulte, .duree, .calories {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #4ECDC4;
+      }
+      
+      ion-icon {
+        font-size: 1.2rem;
+        color: #666;
+      }
+      
+      p, h4 {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #666;
+      }
+    }
+  }
+  
+  .description {
+    margin: 15px 0;
+    color: #444;
+    line-height: 1.5;
+  }
+  
+  .instructions, .equipement {
+    margin-top: 15px;
+    
+    h5 {
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    p {
+      color: #666;
+      line-height: 1.4;
+    }
+  }
+  
+  .search {
+    --background: #f5f5f5;
+    --border-radius: 8px;
+    margin: 10px 16px;
+    
+    ion-icon {
+      color: #666;
+      margin-right: 8px;
+    }
+    
+    ion-input {
+      --placeholder-color: #999;
+    }
+  }
+  
+  .entete {
+    text-align: center;
+    margin-bottom: 20px;
+    
+    #h4 {
+      font-size: 1.4rem;
+      color: #333;
+      margin: 0;
+      font-weight: 600;
+    }
+  }

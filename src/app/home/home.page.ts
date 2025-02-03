@@ -9,7 +9,6 @@ import {
   IonIcon, 
   IonInput,
   IonCard,
-
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
@@ -56,7 +55,6 @@ addIcons({
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
-    RouterModule,
     CommonModule,
     IonHeader,
     IonToolbar,
