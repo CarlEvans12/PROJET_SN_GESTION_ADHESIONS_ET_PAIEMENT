@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { IonicModule } from '@ionic/angular';
+import { FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 interface LoginResponse {
     success: boolean;
@@ -12,6 +16,21 @@ interface LoginResponse {
     selector: 'app-login',
     templateUrl: './login.page.html',
     styleUrls: ['./login.page.scss'],
+})
+@Component({
+  imports: [
+    ReactiveFormsModule // Nécessaire pour les formulaires
+  ]
+})
+
+@Component({
+  standalone: true,
+  imports: [
+    IonicModule,
+    ReactiveFormsModule,
+    CommonModule
+  ],
+  templateUrl: './login.page.html'
 })
 export class LoginPage {
     loginForm: FormGroup;
