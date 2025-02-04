@@ -28,7 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'exercices',
-    loadComponent: () => import('./exercices/exercices.page').then( m => m.ExercicesPage)
+    loadComponent: () => import('./exercices/exercices.page').then(m => m.ExercicesPage)
   },
   {
     path: 'notification',

@@ -13,4 +13,13 @@ export class AuthService {
   register(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
+  getCurrentUserId(): number | null {
+    // Récupérer l'utilisateur depuis le stockage local ou la session
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      return user.user_id;
+    }
+    return null;
+  }
 }
