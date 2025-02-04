@@ -1,0 +1,145 @@
+/* dashboard.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Container - Main layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Premiere page - Navigation buttons */
+.premiere_page {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #004aad;
+    padding: 10px 0;
+}
+
+.premiere_page button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.premiere_page .img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s;
+}
+
+.premiere_page .img1 {
+    width: 45px;
+    height: 45px;
+    transition: transform 0.2s;
+}
+
+.premiere_page button:hover .img, 
+.premiere_page button:hover .img1 {
+    transform: scale(1.2);
+}
+
+/* Deuxieme page - Main content */
+.deuxieme_page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #e8f1fc;
+}
+
+/* Identity Section */
+.identity {
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+
+.identity button {
+    background-color: #004aad;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.identity button:hover {
+    transform: scale(1.1);
+}
+
+.identity .img2 {
+    width: 50px;
+    height: 50px;
+}
+
+/* Logo and Home */
+.hom {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Carreaux Section */
+.carreaux {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.carreaux > div {
+    background-color: #004aad;
+    width: 200px;
+    height: 150px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.carreaux > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carreaux p {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+.carreaux input {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    width: 80%;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Bienvenue Section */
+.bien {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #004aad;
+}
