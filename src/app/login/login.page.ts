@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import {  
-   IonItem, IonButton, IonInput } from '@ionic/angular/standalone';
-
+import { IonItem, IonButton, IonInput } from '@ionic/angular/standalone';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+interface LoginResponse {
+  message: string;
+  user?: any; // Remplacez `any` par le type spécifique de votre utilisateur si vous avez une interface pour ça
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -21,18 +24,20 @@ import {
     IonItem,
     IonToolbar,
     IonButton,
-    IonInput
+    IonInput,
+    HttpClientModule
   ]
 })
+
 export class LoginPage implements OnInit {
+  loginForm!: FormGroup;
 
-  loginForm!: FormGroup; //permet de dire à TypeScript que je suis  sûr que la variable loginForm sera initialisée à un moment donné avant d'être utilisée pour eviter les erreur 
-
-
-  constructor(private router: Router,
-     private formBuilder: FormBuilder,) {
-
-    // Empêcher le retour en arrière
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private http: HttpClient
+  ) {
+    // Prevent browser back navigation
     history.pushState(null, '', window.location.href);
     window.onpopstate = function () {
       history.pushState(null, '', window.location.href);
@@ -45,13 +50,24 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-
+ 
   onLogin() {
     if (this.loginForm.valid) {
-      // ici quand on va impleter l'api comme ca apres souscription des info ca va allé chercher dans la bd du  coté admin
-      
-    }
-  }
+      const { email, password } = this.loginForm.value;
+      this.http.post<LoginResponse>('http://localhost:3000/login/membre', { email_membre: email, motDePasse: password })
+      .subscribe(response => {
+        console.log('Réponse du serveur:', response);
+        // Gérer la redirection ou l'affichage d'un message de succès
+        if (response.message === 'Connexion réussie') {
+          // Rediriger l'utilisateur ou afficher un message de succès
+          this.router.navigate(['/home']); // Exemple de redirection
+        }
+      }, error => {
+        console.error('Erreur de connexion:', error);
+        // Afficher un message d'erreur à l'utilisateur
+        alert(error.error.message || 'Une erreur est survenue');
+      });
+  } }
 
   goToRegister() {
     this.router.navigate(['/register']);
